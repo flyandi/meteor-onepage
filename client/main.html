@@ -1,0 +1,73 @@
+<body>
+	{{> main}}
+
+</body>
+
+
+<template name="main">
+
+	{{> navigation}}
+
+	{{> content}}
+
+</template> 
+
+
+<template name="navigation">
+
+	<div id="navigation">
+
+		<section>
+
+			<div class="logo">
+				<a href="#"></a>
+			</div>
+
+			<nav>
+				{{#each navigationItems}}
+
+					<div class="divider"></div>
+
+					<a href="#{{navigationLink this}}">{{this}}</a>
+				
+				{{/each}}
+			</nav>
+
+		</section>
+
+	</div>
+
+</template>
+
+
+<template name="content">
+
+	<div id="content">
+
+		{{#each contentSections}}
+
+			{{#if isTemplate}} 
+
+				{{> Template.dynamic template}}
+
+			{{else}}
+
+				<section>
+					<a name="{{navigationLink title}}"></a>
+
+					{{#if headline}} 
+						<h2 class="ui header">{{headline}}</h2>
+					{{/if}}
+
+
+
+				</section>
+
+			{{/if}}
+
+
+		{{/each}}
+
+	</div>
+
+</template>
