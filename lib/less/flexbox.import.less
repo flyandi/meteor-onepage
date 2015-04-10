@@ -1,130 +1,260 @@
-// Flexbox display
-// flex or inline-flex
-.flexbox(@display: flex) {
-	display: ~"-webkit-@{display}";
-	display: ~"-moz-@{display}";
-	display: ~"-ms-@{display}box"; // IE10 uses -ms-flexbox
-	display: ~"-ms-@{display}"; // IE11
-	display: @display;
+/**
+ * ::flexbox
+ */
+
+.inline-flexbox() {
+  display: -webkit-inline-flex;
+  display: -moz-inline-flex;
+  display: -ms-inline-flex;
+  display: -o-inline-flex;
+  display: inline-flex;
 }
 
-// The 'flex' shorthand
-// - applies to: flex items
-// <positive-number>, initial, auto, or none
-.flex(@columns: initial) {
-  -webkit-flex: @columns;
-     -moz-flex: @columns;
-      -ms-flex: @columns;
-          flex: @columns;
+.flexbox() {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
 }
 
-// Flex Flow Direction
-// - applies to: flex containers
-// row | row-reverse | column | column-reverse
-.flex-direction(@direction: row) {
+/**
+ * ::flex
+ */
+
+.flex(@flex) when (@flex = auto) {
+  -webkit-flex: 1 1 auto;
+  -moz-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  -o-flex: 1 1 auto;
+  flex: 1 1 auto;
+  .flex-align-self(auto);
+}
+
+.flex(@flex; @basis) when (@flex = auto) {
+  -webkit-flex: 1 1 @basis;
+  -moz-flex: 1 1 @basis;
+  -ms-flex: 1 1 @basis;
+  -o-flex: 1 1 @basis;
+  flex: 1 1 @basis;
+   .flex-align-self(auto);
+}
+
+.flex(@flex) when (@flex = none) {
+  -webkit-flex: 0 0 auto;
+  -moz-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  -o-flex: 0 0 auto;
+  flex: 0 0 auto;
+}
+
+.flex(@flex) when (@flex = initial) {
+  -webkit-flex: 0 1 auto;
+  -moz-flex: 0 1 auto;
+  -ms-flex: 0 1 auto;
+  -o-flex: 0 1 auto;
+  flex: 0 1 auto;
+}
+
+.flex(@flex; @basis) when (@flex = initial) {
+  -webkit-flex: 0 1 @basis;
+  -moz-flex: 0 1 @basis;
+  -ms-flex: 0 1 @basis;
+  -o-flex: 0 1 @basis;
+  flex: 0 1 @basis;
+}
+
+.flex(@grow; @shrink; @basis) {
+  -webkit-flex: @grow @shrink @basis;
+  -moz-flex: @grow @shrink @basis;
+  -ms-flex: @grow @shrink @basis;
+  -o-flex: @grow @shrink @basis;
+  flex: @grow @shrink @basis;
+}
+
+
+/**
+ * ::flex::properties
+ */
+
+.flex-direction(@direction) {
   -webkit-flex-direction: @direction;
-     -moz-flex-direction: @direction;
-      -ms-flex-direction: @direction;
-          flex-direction: @direction;
+  -moz-flex-direction: @direction;
+  -ms-flex-direction: @direction;
+  -o-flex-direction: @direction;
+  flex-direction: @direction;
 }
 
-// Flex Line Wrapping
-// - applies to: flex containers
-// nowrap | wrap | wrap-reverse
-.flex-wrap(@wrap: nowrap) {
-  -webkit-flex-wrap: @wrap;
-     -moz-flex-wrap: @wrap;
-      -ms-flex-wrap: @wrap;
-          flex-wrap: @wrap;
-}
-
-// Flex Direction and Wrap
-// - applies to: flex containers
-// <flex-direction> || <flex-wrap>
-.flex-flow(@flow) {
-  -webkit-flex-flow: @flow;
-     -moz-flex-flow: @flow;
-      -ms-flex-flow: @flow;
-          flex-flow: @flow;
-}
-
-// Display Order
-// - applies to: flex items
-// <integer>
-.flex-order(@order: 0) {
+.flex-order(@order) {
   -webkit-order: @order;
-     -moz-order: @order;
-      -ms-order: @order;
-          order: @order;
+  -moz-order: @order;
+  -ms-order: @order;
+  -o-order: @order;
+  order: @order;
 }
 
-// Flex grow factor
-// - applies to: flex items
-// <number>
-.flex-grow(@grow: 0) {
-  -webkit-flex-grow: @grow;
-     -moz-flex-grow: @grow;
-      -ms-flex-grow: @grow;
-          flex-grow: @grow;
+.flex-wrap(@wrap-method) {
+  -webkit-flex-wrap: @wrap-method;
+  -moz-flex-wrap: @wrap-method;
+  -ms-flex-wrap: @wrap-method;
+  -o-flex-wrap: @wrap-method;
+  flex-wrap: @wrap-method;
 }
 
-// Flex shr
-// - applies to: flex itemsink factor
-// <number> 
-.flex-shrink(@shrink: 1) {
-  -webkit-flex-shrink: @shrink;
-     -moz-flex-shrink: @shrink;
-      -ms-flex-shrink: @shrink;
-          flex-shrink: @shrink;
+.flex-align-items(@align-item-method) when (@align-item-method = start) {
+  -webkit-align-items: flex-start;
+  -moz-align-items: flex-start;
+  -ms-align-items: flex-start;
+  -o-align-items: flex-start;
+  align-items: flex-start;
 }
 
-// Flex basis
-// - the initial main size of the flex item
-// - applies to: flex itemsnitial main size of the flex item
-// <width> 
-.flex-basis(@width: auto) {
+.flex-align-items(@align-item-method) when (@align-item-method = end) {
+  -webkit-align-items: flex-end;
+  -moz-align-items: flex-end;
+  -ms-align-items: flex-end;
+  -o-align-items: flex-end;
+  align-items: flex-end;
+}
+
+.flex-align-items(@align-item-method) when 
+                                  (@align-item-method = center), 
+                                  (@align-item-method = baseline),
+                                  (@align-item-method = stretch) {
+  -webkit-align-items: @align-item-method;
+  -moz-align-items: @align-item-method;
+  -ms-align-items: @align-item-method;
+  -o-align-items: @align-item-method;
+  align-items: @align-item-method;
+}
+
+
+.flex-align-self(@align-self-method) when (@align-self-method = start) {
+  -webkit-align-self: flex-start;
+  -moz-align-self: flex-start;
+  -ms-align-self: flex-start;
+  -o-align-self: flex-start;
+  align-self: flex-start;
+}
+
+.flex-align-self(@align-self-method) when (@align-self-method = end) {
+  -webkit-align-self: flex-end;
+  -moz-align-self: flex-end;
+  -ms-align-self: flex-end;
+  -o-align-self: flex-end;
+  align-self: flex-end;
+}
+
+.flex-align-self(@align-self-method) when 
+                                (@align-self-method = auto), 
+                                (@align-self-method = center), 
+                                (@align-self-method = baseline), 
+                                (@align-self-method = stretch) {
+  -webkit-align-self: @align-self-method;
+  -moz-align-self: @align-self-method;
+  -ms-align-self: @align-self-method;
+  -o-align-self: @align-self-method;
+  align-self: @align-self-method;
+}
+
+.flex-align-content(@align-content-method) when (@align-content-method = start) {
+  -webkit-align-content: flex-start;
+  -moz-align-content: flex-start;
+  -o-align-content: flex-start;
+  align-content: flex-start;
+}
+
+.flex-align-content(@align-content-method) when (@align-content-method = end) {
+  -webkit-align-content: flex-end;
+  -moz-align-content: flex-end;
+  -o-align-content: flex-end;
+  align-content: flex-end;
+}
+
+.flex-align-content(@align-content-method) when (@align-content-method = space-between) {
+  -webkit-align-content: space-between;
+  -moz-align-content: space-between;
+  -o-align-content: space-between;
+  align-content: space-between;
+}
+
+.flex-align-content(@align-content-method) when (@align-content-method = space-around) {
+  -webkit-align-content: space-around;
+  -moz-align-content: space-around;
+  -o-align-content: space-around;
+  align-content: space-around;
+}
+
+.flex-align-content(@align-content-method) when 
+                                  (@align-content-method = center), 
+                                  (@align-content-method = stretch) {
+  -webkit-align-content: @align-content-method;
+  -moz-align-content: @align-content-method;
+  -o-align-content: @align-content-method;
+  align-content: @align-content-method;
+}
+
+.flex-justify-content(@justify-method) when (@justify-method = start) {
+  -webkit-justify-content: flex-start;
+  -moz-justify-content: flex-start;
+  -ms-justify-content: flex-start;
+  -o-justify-content: flex-start;
+  justify-content: flex-start;
+}
+
+.flex-justify-content(@justify-method) when (@justify-method = end) {
+  -webkit-justify-content: flex-end;
+  -moz-justify-content: flex-end;
+  -ms-justify-content: flex-end;
+  -o-justify-content: flex-end;
+  justify-content: flex-end;
+}
+
+.flex-justify-content(@justify-method) when (@justify-method = center) {
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  -o-justify-content: center;
+  justify-content: center;
+}
+
+.flex-justify-content(@justify-method) when (@justify-method = space-between) {
+  -webkit-justify-content: space-between;
+  -moz-justify-content: space-between;
+  -ms-justify-content: space-between;
+  -o-justify-content: space-between;
+  justify-content: space-between;
+}
+
+.flex-justify-content(@justify-method) when (@justify-method = space-around) {
+  -webkit-justify-content: space-around;
+  -moz-justify-content: space-around;
+  -ms-justify-content: space-around;
+  -o-justify-content: space-around;
+  justify-content: space-around;
+}
+
+.flex-grow(@multiplier) {
+  -webkit-flex-grow: @multiplier;
+  -moz-box-flex: @multiplier;
+  -ms-flex: @multiplier 1 auto;
+  flex-grow: @multiplier;
+}
+
+.flex-shrink(@multiplier) {
+  -webkit-flex-shrink: @multiplier;
+  -ms-flex: 0 @multiplier auto;
+  flex-shrink: @multiplier;
+}
+
+.flex-basis(@width) {
   -webkit-flex-basis: @width;
-     -moz-flex-basis: @width;
-      -ms-flex-basis: @width;
-          flex-basis: @width;
+  -ms-flex: 0 1 @width;
+  flex-basis: @width;
 }
 
-// Axis Alignment
-// - applies to: flex containers
-// flex-start | flex-end | center | space-between | space-around 
-.justify-content(@justify: flex-start) {
-  -webkit-justify-content: @justify;
-     -moz-justify-content: @justify;
-      -ms-justify-content: @justify;
-          justify-content: @justify;
-}
-
-// Packing Flex Lines
-// - applies to: multi-line flex containers
-// flex-start | flex-end | center | space-between | space-around | stretch 
-.align-content(@align: stretch) {
-  -webkit-align-content: @align;
-     -moz-align-content: @align;
-      -ms-align-content: @align;
-          align-content: @align;
-}
-
-// Cross-axis Alignment
-// - applies to: flex containers
-// flex-start | flex-end | center | baseline | stretch 
-.align-items(@align: stretch) {
-  -webkit-align-items: @align;
-     -moz-align-items: @align;
-      -ms-align-items: @align;
-          align-items: @align;
-}
-
-// Cross-axis Alignment
-// - applies to: flex items
-// auto | flex-start | flex-end | center | baseline | stretch 
-.align-self(@align: auto) {
-  -webkit-align-self: @align;
-     -moz-align-self: @align;
-      -ms-align-self: @align;
-          align-self: @align;
+.flex-flow (@direction; @rest...) {
+  -webkit-flex-flow: @direction @rest;
+  -ms-flex-flow: @direction @rest;
+  flex-flow: @direction @rest;
 }

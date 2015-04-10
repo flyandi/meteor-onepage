@@ -1,0 +1,185 @@
+
+/**
+ * ::mixins
+ */
+
+.center {
+  margin:0 auto;
+  text-align:center;
+}
+
+.block {
+  display:block;
+}
+
+.inline {
+  display:inline-block;
+}
+
+.none {
+  display:none;
+}
+
+.position(@type; @top: auto; @left: auto; @right: auto; @bottom: auto;) {
+  position: @type;
+  top: @top;
+  right: @right;
+  bottom: @bottom;
+  left: @left;
+}
+
+.background(@background) {
+  background: @background;
+}
+
+.margin(@top; @left; @bottom; @right) {
+	margin: @top @right @bottom @left;
+}
+
+.margin(@margin) {
+	margin: @margin;
+}
+
+.margin(@h; @v) {
+  margin: @h @v;
+}
+
+.padding(@top; @left; @bottom; @right) {
+	padding: @top @right @bottom @left;
+}
+
+.padding(@padding) {
+	padding: @padding;
+}
+
+.padding(@h; @v) {
+  padding: @h @v;
+}
+
+.shadow(@color: @color_shadow; @x: 0; @y: 0; @d: 0.3em; @s: 0.2em) {
+	box-shadow: @color @x @y @d @s;
+}
+
+.scrollable(@x: scroll; @y: scroll) {
+  overflow:hidden;
+	overflow-y:@y;
+	overflow-x:@x;
+}
+
+.borderbottom(@size: 1px; @border: solid @color_border) {
+	border-bottom:@size @border;
+}
+
+.bordertop(@size: 1px; @border: solid @color_border) {
+	border-top:@size @border;
+}
+
+.borderleft(@size: 1px; @border: solid @color_border) {
+	border-left:@size @border;
+}
+
+.borderright(@size: 1px; @border: solid @color_border) {
+	border-right:@size @border;
+}
+
+.bordered(@top-color: @color_border; @right-color: @color_border; @bottom-color: @color_border; @left-color: @color_border; @size: 1px) {
+  border-top: solid @size @top-color;
+  border-left: solid @size @left-color;
+  border-right: solid @size@right-color;
+  border-bottom: solid @size @bottom-color;
+}
+
+.rounded(@radius: 2px) {
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+  border-radius: @radius;
+}
+
+.border-radius(@topright: 0, @bottomright: 0, @bottomleft: 0, @topleft: 0) {
+  -webkit-border-top-right-radius: @topright;
+  -webkit-border-bottom-right-radius: @bottomright;
+  -webkit-border-bottom-left-radius: @bottomleft;
+  -webkit-border-top-left-radius: @topleft;
+  -moz-border-radius-topright: @topright;
+  -moz-border-radius-bottomright: @bottomright;
+  -moz-border-radius-bottomleft: @bottomleft;
+  -moz-border-radius-topleft: @topleft;
+  border-top-right-radius: @topright;
+  border-bottom-right-radius: @bottomright;
+  border-bottom-left-radius: @bottomleft;
+  border-top-left-radius: @topleft;
+  .background-clip(padding-box);
+}
+
+.opacity(@opacity: 0.5) {
+  -moz-opacity: @opacity;
+  -khtml-opacity: @opacity;
+  -webkit-opacity: @opacity;
+  opacity: @opacity;
+  @opperc: @opacity * 100;
+  -ms-filter: ~"progid:DXImageTransform.Microsoft.Alpha(opacity=@{opperc})";
+  filter: ~"alpha(opacity=@{opperc})";
+}
+
+.user-select(@argument: none) {
+  -webkit-user-select: @argument;
+  -moz-user-select: @argument;
+  -ms-user-select: @argument;
+  user-select: @argument;
+}
+
+.background-clip(@argument: padding-box) {
+  -moz-background-clip: @argument;
+  -webkit-background-clip: @argument;
+  background-clip: @argument;
+}
+
+.gradient(@color: #F5F5F5, @start: #EEE, @stop: #FFF) {
+  background: @color;
+  background: -webkit-gradient(linear,
+                               left bottom,
+                               left top,
+                               color-stop(0, @start),
+                               color-stop(1, @stop));
+  background: -ms-linear-gradient(bottom,
+                                  @start,
+                                  @stop);
+  background: -moz-linear-gradient(center bottom,
+                                   @start 0%,
+                                   @stop 100%);
+  background: -o-linear-gradient(@stop,
+                                 @start);
+  filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",@stop,@start));
+}
+
+.bw-gradient(@color: #F5F5F5, @start: 0, @stop: 255) {
+  background: @color;
+  background: -webkit-gradient(linear,
+                               left bottom,
+                               left top,
+                               color-stop(0, rgb(@start,@start,@start)),
+                               color-stop(1, rgb(@stop,@stop,@stop)));
+  background: -ms-linear-gradient(bottom,
+                                  rgb(@start,@start,@start) 0%,
+                                  rgb(@stop,@stop,@stop) 100%);
+  background: -moz-linear-gradient(center bottom,
+                                   rgb(@start,@start,@start) 0%,
+                                   rgb(@stop,@stop,@stop) 100%);
+  background: -o-linear-gradient(rgb(@stop,@stop,@stop),
+                                 rgb(@start,@start,@start));
+  filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",rgb(@stop,@stop,@stop),rgb(@start,@start,@start)));
+}
+
+.pointer(@cursor: pointer) {
+	cursor: @cursor;
+}
+
+.textoverflow() {
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.textattributes(@weight: @font_regular, @lh: normal) {
+  font-weight: @weight;
+  line-height: @lh;
+}
