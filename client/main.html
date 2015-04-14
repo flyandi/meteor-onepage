@@ -19,8 +19,8 @@
 		<section>
 
 			<div class="logo">
-				<a href="{{getSetting 'logolink' '/'}}">
-					<img src="{{getSetting 'logo'}}" />
+				<a href="{{opGetSetting 'logolink' '/'}}">
+					<img src="{{opGetSetting 'logo'}}" />
 				</a>
 			</div>
 
@@ -29,7 +29,7 @@
 
 					<div class="divider"></div>
 
-					<a href="#{{navigationLink this}}">{{this}}</a>
+					<a href="#{{opNavigationLink this}}">{{this}}</a>
 				
 				{{/each}}
 			</nav>
@@ -54,7 +54,7 @@
 			{{else}}
 
 				<section>
-					<a name="{{navigationLink title}}"></a>
+					<a name="{{opNavigationLink title}}"></a>
 
 					{{#if headline}} 
 						<h2 class="ui header">{{headline}}</h2>

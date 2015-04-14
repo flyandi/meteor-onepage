@@ -10,11 +10,11 @@
  * ::globals
  */
 
-UI.registerHelper("navigationLink", function(label) {
+UI.registerHelper("opNavigationLink", function(label) {
 	return label.replace(/\W+/g, "").toLowerCase();
 });
 
-UI.registerHelper("getSetting", function(name, _default) {
+UI.registerHelper("opGetSetting", function(name, _default) {
 	return Settings[name] || _default;
 });
 

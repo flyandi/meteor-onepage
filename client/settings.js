@@ -13,7 +13,7 @@ Settings = {
 
 	logo: '/logo.svg',
 
-	copyright: 'Copy &copy; 2015',
+	copyright: '&copy; 2015',
 
 	sections: [
 
