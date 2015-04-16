@@ -62,7 +62,7 @@ Template.slider.helpers({
 
 	getSlides: function() {	
 
-		return Settings.sliders[this.name] || false;
+		return Settings.sliders[this.name].slides || false;
 	},	
 
 });

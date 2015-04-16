@@ -73,11 +73,11 @@
 
 <template name="slider">
 
-	<div class="slider">
+	<div class="op slider">
 		{{#each getSlides}}
 
-			<div class="slide">
-				{{text}}
+			<div class="slide" style="background-image:url({{image}})">
+				<span class="text">{{text}}</span>
 			</div>
 
 		{{/each}}

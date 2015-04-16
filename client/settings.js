@@ -34,11 +34,19 @@ Settings = {
 
 	sliders: {
 
-		top: [
-			{image: '/slider.jpg', text: 'Even has an built in slider'},
-			{image: '/slider.jpg', text: 'This is simple to configure'},
-			{image: '/slider.jpg', text: 'And doesn\'t take anytime to get running'},
-		],
+		top: {
+			auto: true,
+			
+			every: 5,
+
+			slides: [
+				{image: '/1.jpg', text: 'Even has an built in slider'},
+				{image: '/2.jpg', text: 'This is simple to configure'},
+				{image: '/3.jpg', text: 'And doesn\'t take anytime to get running'},
+				{image: '/4.jpg', text: 'Learn more'},
+			],
+
+		}
 	}
 
 
